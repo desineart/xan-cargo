@@ -674,8 +674,7 @@ font-weight: bold;
 #airshadow {
   /* Стили для тени */
   position: relative; /* Абсолютное позиционирование внутри контейнера */
-  top: 20%; /* Выравнивание по вертикали */
-  left: 0%; /* Выравнивание по горизонтали */
+  margin-bottom: 30%;
   /* Другие стили (размер, фон и т.д.) */
   transform: translateX(-50%, -50%); /* Центрирование элемента */
   animation: moveShadow 2s infinite;
