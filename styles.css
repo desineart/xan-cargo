@@ -669,6 +669,8 @@ font-weight: bold;
 #air {
   animation: moveAndRotatePlane 2s infinite;
   z-index: +1;
+  margin-bottom: -30%;
+
 }
 
 #airshadow {
