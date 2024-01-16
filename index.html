@@ -330,10 +330,20 @@
                         var cargoCode = cargoInfo[0]; // Номер груза
                         if (cargoCode === trackingNumber) {
                             // Отобразить информацию о грузе
-                            var cargoDetails = "Информация о грузе: " + cargoInfo[4]; // Информация о грузе
-                            document.getElementById("trackingResults").innerHTML = cargoDetails;
-                            return;
-                        }
+                            var cargoDetails = "<strong>Номер груза:</strong> " + cargoInfo[0] + "<br>";
+            cargoDetails += "<strong>ФИО Владельца Груза:</strong> " + cargoInfo[1] + "<br>";
+            cargoDetails += "<strong>Происхождение Груза:</strong> " + cargoInfo[2] + "<br>";
+            cargoDetails += "<strong>Место Назначения Груза:</strong> " + cargoInfo[3] + "<br>";
+            cargoDetails += "<strong>Информация о Грузе:</strong> " + cargoInfo[4] + "<br>";
+            cargoDetails += "<strong>Вес Груза (кг):</strong> " + cargoInfo[5] + "<br>";
+            cargoDetails += "<strong>Статус 1:</strong> " + cargoInfo[6] + " (Дата 1: " + cargoInfo[7] + ")<br>";
+            cargoDetails += "<strong>Статус 2:</strong> " + cargoInfo[8] + " (Дата 2: " + cargoInfo[9] + ")<br>";
+            cargoDetails += "<strong>Статус 3:</strong> " + cargoInfo[10] + " (Дата 3: " + cargoInfo[11] + ")<br>";
+
+            // Добавьте другие столбцы, если необходимо
+            document.getElementById("trackingResults").innerHTML = cargoDetails;
+            return;
+        }
                     }
                     // Если номер груза не найден
                     document.getElementById("trackingResults").innerHTML = "Груз с номером " + trackingNumber + " не найден.";
