@@ -322,15 +322,15 @@
                 valueRenderOption: 'FORMATTED_VALUE',
                 majorDimension: 'ROWS',
             }).then(function(response) {
-                var values = response.result.values;
-                if (values.length > 0) {
-                    // Поиск информации о грузе по номеру
-                    for (var i = 1; i < values.length; i++) {
-                        var cargoInfo = values[i];
-                        var cargoCode = cargoInfo[0]; // Номер груза
-                        if (cargoCode === trackingNumber) {
-                            // Отобразить информацию о грузе
-                            var cargoDetails = "<strong>Номер груза:</strong> " + cargoInfo[0] + "<br>";
+              var values = response.result.values;
+if (values.length > 0) {
+    // Поиск информации о грузе по номеру
+    for (var i = 1; i < values.length; i++) {
+        var cargoInfo = values[i];
+        var cargoCode = cargoInfo[0]; // Номер груза
+        if (cargoCode === trackingNumber) {
+            // Отобразить информацию о грузе
+            var cargoDetails = "<strong>Номер груза:</strong> " + cargoInfo[0] + "<br>";
             cargoDetails += "<strong>ФИО Владельца Груза:</strong> " + cargoInfo[1] + "<br>";
             cargoDetails += "<strong>Происхождение Груза:</strong> " + cargoInfo[2] + "<br>";
             cargoDetails += "<strong>Место Назначения Груза:</strong> " + cargoInfo[3] + "<br>";
