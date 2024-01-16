@@ -227,55 +227,7 @@
         <button type="button" id="trackButton">Отследить груз</button>
         <div id="trackingResults"></div>
     </div>
-<script src="https://apis.google.com/js/api.js"></script>
-    <script>
-        gapi.load('client:auth2', init);
 
-        function init() {
-            gapi.client.init({
-                apiKey: 'AIzaSyDmgGIgw22FOUWvl_dqnHu5w87w58nK5M8', // Замените на ваш API ключ
-                discoveryDocs: ["https://sheets.googleapis.com/$discovery/rest?version=v4"],
-            }).then(function () {
-                // API успешно инициализирован
-            }).catch(function (error) {
-                console.log('Ошибка при инициализации API: ' + error);
-            });
-        }
-
-        document.getElementById("trackButton").addEventListener("click", function () {
-            var trackingNumber = document.getElementById("trackingCode").value;
-            trackCargo(trackingNumber);
-        });
-
-        function trackCargo(trackingNumber) {
-            gapi.client.sheets.spreadsheets.values.get({
-                spreadsheetId: 'https://docs.google.com/spreadsheets/d/113xg64Brc1jGgbpJoRCD_9AX4ZxOkTcWNHfjE7HpTKs/edit?usp=sharing', // Замените на скопированную ссылку
-                range: 'Sheet1', // Имя вашего листа
-                valueRenderOption: 'FORMATTED_VALUE',
-                majorDimension: 'ROWS',
-            }).then(function (response) {
-                var values = response.result.values;
-                if (values.length > 0) {
-                    for (var i = 1; i < values.length; i++) {
-                        var cargoInfo = values[i];
-                        var cargoCode = cargoInfo[0]; // Номер груза
-                        if (cargoCode === trackingNumber) {
-                            var cargoDetails = "Номер груза: " + cargoInfo[0] + "<br>";
-                            cargoDetails += "ФИО Владельца Груза: " + cargoInfo[1] + "<br>";
-                            // Добавьте остальные поля
-                            document.getElementById("trackingResults").innerHTML = cargoDetails;
-                            return;
-                        }
-                    }
-                    document.getElementById("trackingResults").innerHTML = "Груз с номером " + trackingNumber + " не найден.";
-                } else {
-                    document.getElementById("trackingResults").innerHTML = "Таблица пуста.";
-                }
-            }).catch(function (error) {
-                console.log('Ошибка при запросе данных: ' + error);
-            });
-        }
-    </script>
   <div class="feedback-form">
     <div class="feedback-content">
       <h1>Оставьте<br>заявку</h1>
@@ -334,6 +286,64 @@
       }
     });
   </script>
+<script src="https://apis.google.com/js/api.js"></script>
+    <script>
+        // Инициализация Google Sheets API с использованием API ключа
+        function init() {
+            gapi.load('client', function() {
+                gapi.client.init({
+                    apiKey: 'AIzaSyDmgGIgw22FOUWvl_dqnHu5w87w58nK5M8',
+                    discoveryDocs: ["https://sheets.googleapis.com/$discovery/rest?version=v4"],
+                }).then(function() {
+                    // API успешно инициализирован
+                }).catch(function(error) {
+                    console.log('Ошибка при инициализации API: ' + error);
+                });
+            });
+        }
 
+        // Используем событие DOMContentLoaded для установки обработчика события на кнопке
+        document.addEventListener('DOMContentLoaded', function() {
+            // Вызов функции инициализации Google API
+            init();
+
+            // Настройка обработчика события на кнопке
+            var trackButton = document.getElementById("trackButton");
+            trackButton.addEventListener("click", function() {
+                var trackingNumber = document.getElementById("trackingCode").value;
+                trackCargo(trackingNumber);
+            });
+        });
+
+        function trackCargo(trackingNumber) {
+            gapi.client.sheets.spreadsheets.values.get({
+                spreadsheetId: '113xg64Brc1jGgbpJoRCD_9AX4ZxOkTcWNHfjE7HpTKs',
+                range: 'Sheet1', // Замените на имя вашего листа или диапазон
+                valueRenderOption: 'FORMATTED_VALUE',
+                majorDimension: 'ROWS',
+            }).then(function(response) {
+                var values = response.result.values;
+                if (values.length > 0) {
+                    // Поиск информации о грузе по номеру
+                    for (var i = 1; i < values.length; i++) {
+                        var cargoInfo = values[i];
+                        var cargoCode = cargoInfo[0]; // Номер груза
+                        if (cargoCode === trackingNumber) {
+                            // Отобразить информацию о грузе
+                            var cargoDetails = "Информация о грузе: " + cargoInfo[4]; // Информация о грузе
+                            document.getElementById("trackingResults").innerHTML = cargoDetails;
+                            return;
+                        }
+                    }
+                    // Если номер груза не найден
+                    document.getElementById("trackingResults").innerHTML = "Груз с номером " + trackingNumber + " не найден.";
+                } else {
+                    document.getElementById("trackingResults").innerHTML = "Таблица пуста.";
+                }
+            }).catch(function(error) {
+                console.log('Ошибка при запросе данных: ' + error);
+            });
+        }
+    </script>
 </body>
 </html>
