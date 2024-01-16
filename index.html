@@ -224,75 +224,60 @@
  <div class="tracking-container">
         <h1>Отследить груз</h1>
         <input type="text" id="trackingCode" placeholder="Введите номер вашего груза">
-        <button type="submit" id="trackButton">Отследить груз</button>
+        <button type="button" id="loginButton">Войти</button>
+        <button type="button" id="trackButton" style="display:none;">Отследить груз</button>
         <div id="trackingResults"></div>
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://apis.google.com/js/client.js?onload=init"></script>
+    <script src="https://apis.google.com/js/api.js"></script>
     <script>
+        var googleAuth;
+
         function init() {
-            // Инициализация Google Sheets API
-            gapi.client.init({
-                apiKey: "AIzaSyDmgGIgw22FOUWvl_dqnHu5w87w58nK5M8",
-                discoveryDocs: ["https://sheets.googleapis.com/$discovery/rest?version=v4"],
-            }).then(function() {
-                // API успешно инициализирован
-            }).catch(function(error) {
-                console.log('Ошибка при инициализации API: ' + error);
+            gapi.load('client:auth2', function() {
+                gapi.client.init({
+                    clientId: 'Ваш_OAuth_2_0_клиентский_идентификатор',
+                    scope: 'https://www.googleapis.com/auth/spreadsheets.readonly',
+                }).then(function() {
+                    googleAuth = gapi.auth2.getAuthInstance();
+
+                    $("#loginButton").on("click", function() {
+                        googleAuth.signIn().then(function() {
+                            if (googleAuth.isSignedIn.get()) {
+                                $("#loginButton").hide();
+                                $("#trackButton").show();
+                            }
+                        });
+                    });
+
+                    $("#trackButton").on("click", function() {
+                        var trackingNumber = $("#trackingCode").val();
+                        trackCargo(trackingNumber);
+                    });
+                });
             });
         }
 
-        $("#trackButton").on("click", function() {
-            var trackingNumber = $("#trackingCode").val();
-            trackCargo(trackingNumber);
-        });
-
         function trackCargo(trackingNumber) {
-            // Здесь вам нужно отправить запрос к Google Sheets API,
-            // чтобы получить информацию о грузе на основе trackingNumber
-            // и обновить содержимое div с id "trackingResults" с полученной информацией.
-            // Пример запроса:
+            if (!googleAuth || !googleAuth.isSignedIn.get()) {
+                alert("Вы не вошли в систему с помощью Google. Пожалуйста, войдите, чтобы продолжить.");
+                return;
+            }
+
             gapi.client.sheets.spreadsheets.values.get({
-                spreadsheetId: "113xg64Brc1jGgbpJoRCD_9AX4ZxOkTcWNHfjE7HpTKs",
-                range: 'Лист1', // Имя вашего листа
+                spreadsheetId: 'Ваш_ID_таблицы',
+                range: 'Лист1',
                 valueRenderOption: 'FORMATTED_VALUE',
                 majorDimension: 'ROWS',
             }).then(function(response) {
-                var values = response.result.values;
-                if (values.length > 0) {
-                    // Предполагается, что первая строка - заголовки столбцов,
-                    // а остальные строки содержат информацию о грузах.
-                    for (var i = 1; i < values.length; i++) {
-                        var cargoInfo = values[i];
-                        var cargoCode = cargoInfo[0]; // Номер груза
-                        if (cargoCode === trackingNumber) {
-                            // Если номер груза совпадает, выводим информацию
-                            var cargoDetails = "Номер груза: " + cargoInfo[0] + "<br>";
-                            cargoDetails += "ФИО Владельца Груза: " + cargoInfo[1] + "<br>";
-                            cargoDetails += "Происхождение Груза: " + cargoInfo[2] + "<br>";
-                            cargoDetails += "Место Назначения Груза: " + cargoInfo[3] + "<br>";
-                            cargoDetails += "Информация о Грузе: " + cargoInfo[4] + "<br>";
-                            cargoDetails += "Вес Груза (кг): " + cargoInfo[5] + "<br>";
-                            cargoDetails += "Статус 1: " + cargoInfo[6] + " (Дата 1: " + cargoInfo[7] + ")<br>";
-                            cargoDetails += "Статус 2: " + cargoInfo[8] + " (Дата 2: " + cargoInfo[9] + ")<br>";
-                            cargoDetails += "Статус 3: " + cargoInfo[10] + " (Дата 3: " + cargoInfo[11] + ")<br>";
-
-                            // Добавьте другие столбцы, если необходимо
-                            $("#trackingResults").html(cargoDetails);
-                            return;
-                        }
-                    }
-                    // Если номер груза не найден
-                    $("#trackingResults").html("Груз с номером " + trackingNumber + " не найден.");
-                } else {
-                    $("#trackingResults").html("Таблица пуста.");
-                }
+                // Ваш код обработки данных
+                // ...
             }).catch(function(error) {
                 console.log('Ошибка при запросе данных: ' + error);
             });
         }
-    </script>  
+    </script> 
 
   <div class="feedback-form">
     <div class="feedback-content">
