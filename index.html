@@ -232,13 +232,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://apis.google.com/js/api.js"></script>
     <script>
-        if (typeof jQuery == 'undefined') {  
-    console.log('jQuery is not loaded');
-} else {
-    console.log('jQuery is loaded');
-}
-
-        var googleAuth;
+  var googleAuth;
 
         function init() {
             gapi.load('client:auth2', function() {
