@@ -1,0 +1,937 @@
+/* Обнуляем границы у всех элементов */
+* {
+  margin: 0;
+  margin-top: 10px;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  box-sizing: border-box; /* Учитываем границы и отступы в размерах элементов */
+}
+
+/* Добавляем отступы с обеих сторон страницы */
+.page-container {
+  margin: 0px; /* Отступы по бокам для общего контейнера */
+}
+
+/* Стили для всех элементов, кроме баннера */
+.element {
+  border: 0px solid transparent; /* Обнуляем границу у элементов */
+}
+
+/* Стили для шапки */
+header {
+  background-color: white;
+  margin-right: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Стили для навигационного меню */
+nav ul {
+  margin-left: 20px;
+  list-style: none;
+  display: flex;
+  align-items: center;
+}
+
+nav ul li {
+  margin-right: 20px;
+}
+
+/* Отступ слева для пунктов меню "Направления" */
+.directions-menu {
+  margin-left: 10px;
+}
+
+nav ul li:last-child {
+  margin-right: 0;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #000;
+  font-weight: bold;
+  transition: color 0.3s; /* Добавляем анимацию для цвета текста */
+}
+
+nav ul li a:hover {
+  color: #ffa500; /* Новый цвет текста при наведении */
+}
+
+/* Стили для логотипа */
+.logo {
+  text-align: center;
+  margin-left: 50px;
+  flex: 1;
+}
+
+.logo img {
+  max-width: 20%;
+  height: auto;
+}
+
+/* Стили для контактных данных */
+.contact {
+  display: flex;
+  align-items: center;
+}
+
+.contact a {
+  margin-right: 10px;
+  text-decoration: none;
+  color: #000;
+}
+
+/* Стили для кнопки с номером */
+.phone {
+  padding: 15px 40px;
+  border-radius: 25px;
+  border: 2px solid #000; /* Граница у кнопки */
+  transition: background-color 0.3s, color 0.3s, transform 0.3s; /* Добавляем анимацию для background-color, color и transform */
+}
+
+.phone:hover {
+  background-color: #ffffff; /* Новый цвет фона при наведении */
+  color: rgb(0, 0, 0); /* Новый цвет текста при наведении */
+  transform: scale(1.05); /* Увеличиваем кнопку при наведении (можете изменить значение по вашему вкусу) */
+}
+
+/* Стили для баннера */
+.banner {
+  background-color: black; /* Задаем черный цвет фона */
+  color: white; /* Задаем белый цвет текста */
+  margin-top: 20px; /* Отступ сверху для баннера */
+  margin-right: 40px; /* Отступ справа для баннера */
+  margin-bottom: 20px; /* Отступ снизу для баннера */
+  margin-left: 40px; /* Отступ слева для баннера */
+  border-radius: 25px;
+  height: 750px; /* Высота баннера */
+  text-align: left; /* Выравнивание текста по левому краю баннера */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Выравнивание текста и кнопок в верхний угол */
+  align-items: flex-start; /* Выравнивание текста и кнопок в левый угол */
+  padding: 20px; /* Отступ внутри баннера */
+  position: relative; /* Позиционируем баннер как relative, чтобы разместить текст и изображение внутри */
+}
+
+.banner p.bold {
+  font-size: 72px; /* Размер шрифта для текста внутри баннера */
+  margin: 0; /* Обнуляем внешние отступы абзаца внутри баннера */
+  font-weight: bold; /* Жирный шрифт */
+  margin-left: 40px;
+  margin-top: 40px;
+}
+
+.button-container {
+  margin-top: 0px; /* Отступ сверху для контейнера с кнопками */
+  margin-left: 0px;
+}
+
+/* Стили для кнопки "Оставить заявку" */
+.request-button {
+  background-color: #ffa500; /* Оранжевый цвет фона */
+  color: white; /* Белый цвет текста */
+  padding: 15px 40px; /* Отступы внутри кнопки */
+  border: 0px solid white; /* Белая обводка кнопки */
+  border-radius: 25px; /* Скругление углов кнопки */
+  margin-left: 40px;
+  margin-top: 40px;
+  font-weight: bold; /* Жирный шрифт */
+  font-size: 16px; /* Размер шрифта */
+  cursor: pointer; /* Изменяем курсор при наведении на кнопку */
+  transition: background-color 0.3s, color 0.3s, transform 0.3s; /* Добавляем анимацию для background-color, color и transform */
+}
+
+.request-button:hover {
+  background-color: #ff7b00; /* Новый цвет фона при наведении */
+  color: white; /* Новый цвет текста при наведении */
+  transform: scale(1.05); /* Увеличиваем кнопку при наведении (можете изменить значение по вашему вкусу) */
+}
+
+/* Стили для кнопки "Отследить груз" */
+.track-button {
+  background-color: transparent; /* Прозрачный фон */
+  color: white; /* Белый цвет текста */
+  padding: 15px 40px; /* Отступы внутри кнопки */
+  border: 2px solid white; /* Белая обводка кнопки */
+  border-radius: 25px; /* Скругление углов кнопки */
+  margin-left: 40px;
+  margin-top: 20px;
+  font-weight: bold; /* Жирный шрифт */
+  font-size: 16px; /* Размер шрифта */
+  cursor: pointer; /* Изменяем курсор при наведении на кнопку */
+  transition: background-color 0.3s, color 0.3s, transform 0.3s; /* Добавляем анимацию для background-color, color и transform */
+}
+
+.track-button:hover {
+  background-color: #ffa60000; /* Новый цвет фона при наведении */
+  color: white; /* Новый цвет текста при наведении */
+  transform: scale(1.05); /* Увеличиваем кнопку при наведении (можете изменить значение по вашему вкусу) */
+}
+
+/* Стили для текста "200+" и "50+" */
+.bold {
+  margin: 0;
+  margin-left: 40px;
+  margin-top: 10px;
+  font-size: 72px;
+  font-weight: bold;
+}
+
+/* Стили для информации о партнерах и покрытии */
+.partner-info, .coverage-info {
+  font-size: 16px;
+  font-weight: normal;
+  margin-left: 40px;
+  margin-top: 0px;
+}
+
+/* Стили для текста в правом верхнем углу */
+.banner-text-container {
+  position: absolute; /* Позиционируем абсолютно внутри баннера */
+  top: 60px; /* Отступ сверху */
+  right: 60px; /* Отступ справа */
+}
+
+.banner-text {
+  font-size: 20px;
+  font-weight: normal;
+  text-align: right; /* Выравнивание по правому краю */
+  margin: 0;
+  color: white; /* Белый цвет текста */
+}
+
+/* Стили для изображения в правом нижнем углу */
+.banner-image {
+  position: absolute; /* Позиционируем абсолютно внутри баннера */
+  bottom: 20px; /* Отступ снизу */
+  right: 150px; /* Отступ справа */
+  max-width: 1000px; /* Максимальная ширина изображения */
+  height: auto;
+}
+
+/* Для текста используйте системный шрифт San Francisco или аналогичный */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  /* Этот список шрифтов будет автоматически использовать San Francisco на macOS и iOS */
+}
+
+/* Стили для блока "О нас" */
+.about-us {
+  display: flex; /* Делаем блок "О нас" flex-контейнером */
+  margin: 40px 0;
+}
+
+/* Стили для левой и правой частей блока "О нас" */
+.about-us-left, .about-us-right {
+  padding: 20px;
+  flex: 1; /* Задаём гибкость элементам внутри flex-контейнера */
+}
+
+.about-us-title {
+  font-size: 36px;
+  font-weight: bold;
+  margin-left: 90px;
+  margin-bottom: 20px;
+}
+
+.company-name {
+  color: #ffa500;
+}
+
+.about-us-description,
+.about-us-details {
+  font-size: 20px;
+  line-height: 1.2;
+  margin-bottom: 20px;
+  margin-right: 90px;
+  font-weight: bold;
+}
+
+.timeline-container {
+  position: relative;
+  width: 100%; 
+  height: 2200px; /* Высота контейнера временной линии */
+}
+
+.timeline-line {
+  position: relative;
+  transform: translateX(-50%);
+  left: 50%;
+  top: 490px;
+  width: 3px;
+  height: 1600px; /* Высота временной линии */
+  background-color: #b9b9b9; /* Цвет линии */
+}
+
+.circle-prior {
+  position: relative;
+  top: -1120px;
+  margin-bottom: 240px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #b9b9b9;
+  border: 0px solid #ffa500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 16px; /* Установите желаемый размер шрифта */
+  color: #ffffff00; /* Цвет текста */
+  transition: background-color 0.3s ease;
+}
+
+.circle-prior.highlight {
+  
+  background-color: #ffa500; /* Измените на желаемый цвет фона */
+
+}
+
+.circle-prior2 {
+  position: relative;
+  top: 20px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #b91717;
+  border: 0px solid #cbf403;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 16px; /* Установите желаемый размер шрифта */
+  color: #fff; /* Цвет текста */
+}
+
+.circle-prior3 {
+  position: relative;
+  top: -1120px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #b91717;
+  border: 0px solid #cbf403;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 16px; /* Установите желаемый размер шрифта */
+  color: #fff; /* Цвет текста */
+}
+
+.circle-prior4 {
+  position: relative;
+  top: -1120px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #b91717;
+  border: 0px solid #cbf403;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 16px; /* Установите желаемый размер шрифта */
+  color: #fff; /* Цвет текста */
+}
+
+.circle-prior5 {
+  position: relative;
+  top: -1120px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #b91717;
+  border: 0px solid #cbf403;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 16px; /* Установите желаемый размер шрифта */
+  color: #fff; /* Цвет текста */
+}
+
+
+
+
+/* Стили для блоков преимуществ */
+.timeline-item {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  transform: translateY(-50% -50%);
+  line-height: 1.2;
+  font-size: 20px;
+
+}
+
+/* Первый блок слева */
+.item1 {
+  left: 0;
+  top: 500px;
+}
+
+.item1 .timeline-content {
+  border-top-right-radius: 0%;
+}
+
+/* Второй блок справа (зеркальный первому блоку) */
+.item2 {
+  right: 0;
+  top: 800px;
+  text-align: right;
+  transform: scaleX(-1); /* Отразить блок по горизонтали */
+}
+
+/* Отменить отражение текста внутри второго блока */
+.item2 .timeline-content {
+  transform: scaleX(-1); /* Отменить отражение текста по горизонтали */
+  border-top-left-radius: 0%;
+}
+
+/* Третий блок слева */
+.item3 {
+  left: 0;
+  top: 1100px; /* Расстояние между блоками по высоте */
+  
+}
+
+.item3 .timeline-content {
+  border-top-right-radius: 0%;
+}
+
+/* Четвертый блок справа (зеркальный третьему блоку) */
+.item4 {
+  right: 0;
+  top: 1400px;
+  text-align: right;
+  transform: scaleX(-1); /* Отразить блок по горизонтали */
+}
+
+/* Отменить отражение текста внутри четвертого блока */
+.item4 .timeline-content {
+  transform: scaleX(-1); /* Отменить отражение текста по горизонтали */
+  border-top-left-radius: 0%;
+}
+
+/* Пятый блок слева */
+.item5 {
+  left: 0;
+  top: 1700px; /* Расстояние между блоками по высоте */
+}
+
+.item5 .timeline-content {
+  border-top-right-radius: 0%;
+}
+
+/* Стили для иконок */
+.timeline-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  color: rgba(0, 0, 0, 0);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #ffffff00;
+  border: 2px solid #00000000;
+}
+
+/* Стили для текста преимуществ */
+.timeline-content {
+  padding: 50px;
+  background-color: #F3F3F4;
+  border-radius: 25px;
+  box-shadow: 3px 3px 25px rgba(69, 29, 3, 0.00);
+  flex: 1;
+  max-width: 40%;
+}
+
+/* Другие стили остаются без изменений */
+
+/* Начальные стили для грузовика */
+.truck {
+  position: absolute; 
+  left: 50%; 
+  transform: translateX(-50%);
+  top: 50px; /* Позиция по вертикали, убедитесь, что она корректна */
+  z-index: 10;
+}
+
+.truck-sticky {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50% -50%);
+  /* Убедитесь, что нет других свойств, влияющих на видимость или позиционирование */
+}
+
+.truck img {
+  width: 200px; /* Ширина грузовика */
+  height: auto; /* Высота грузовика */
+}
+
+
+.timeline-text {
+  position: absolute;
+  top: 500px; /* Расположение по вертикали, на уровне первого блока преимущества */
+  right: 50px; /* Расположение по горизонтали, слева от линии */
+  width: 50%; /* Ширина блока с текстом */
+  text-align: right;
+}
+
+.timeline-text p {
+font-size: 72px;
+font-weight: bold;
+}
+
+/* Цифры приоритетов */
+
+.number-prior {
+  font-size: 72px;
+  font-weight: bold;
+  color: #ffa500;
+}
+
+.services-block {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #F3F3F4;
+  height: auto;
+  border-radius: 25px;
+  margin-right: 40px;
+  margin-left: 40px;
+  margin-top: 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+.services-images {
+  width: 100%;
+  text-align: center;
+  margin-left: 0%;
+  position: relative;
+}
+
+.service-image {
+  margin-bottom: 20%;
+  max-width: 90%;
+  height: auto;
+}
+
+.services-list {
+  width: 100%;
+}
+
+.services-list ul {
+  list-style: none;
+  padding: 20%;
+}
+
+.service-item {
+  cursor: pointer;
+  padding: 25px;
+  font-size: 20px;
+  position: relative;
+  display: block;
+}
+
+.service-item:not(:last-child) {
+  border-bottom: 1px solid #ccc;
+}
+
+.service-item::before {
+  content: '';
+  width: 20px;
+  height: 20px;
+  background-color: grey;
+  border-radius: 50%;
+  position: absolute;
+  left: -100px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.service-item.active::before {
+  background-color: #ffa500;
+}
+
+.service-item.active {
+  color: #ffa500;
+}
+
+.service-shadow {
+  max-width: 100%;
+  height: auto;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+
+  
+/* Стили для блока описания */
+.service-description {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  background-color: #ffffff00;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.service-description h1 {
+  font-size: 72px;
+  margin: 0 0 10px;
+}
+
+/* Стили для текста описания */
+.service-description-text {
+  position: absolute;
+  top: 600px;
+  left: 60px;
+  padding-right: 0px;
+  max-width: 40%;
+  font-size: 16px;
+}
+
+/* Стили для кнопки */
+.service-description-button {
+  text-align: left;
+  padding: 10px 20px;
+}
+
+.service-description-button button {
+  position: absolute;
+  font-size: 16px;
+  bottom: 40px;
+  left: 60px;
+  background-color: #ffa500;
+  color: #fff;
+  border: none;
+  padding: 15px 40px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s, transform 0.3s;
+}
+
+.service-description-button button:hover {
+  background-color: #000000;
+  color: white;
+  transform: scale(1.05);
+}
+
+/* Стили для активной кнопки */
+.service-item.active + .service-description-button button {
+  background-color: #ffa500;
+}
+
+.service-image.animate {
+  animation: movePlane 2s infinite;
+}
+
+
+
+/* Animation styles service block */
+@keyframes moveAndRotatePlane {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(-10deg);
+  }
+}
+
+@keyframes moveShadow {
+  0%, 100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(10px);
+    opacity: 0.5;
+  }
+}
+
+#air {
+  animation: moveAndRotatePlane 2s infinite;
+  z-index: +1;
+}
+
+#airshadow {
+  /* Стили для тени */
+  position: absolute; /* Абсолютное позиционирование внутри контейнера */
+  top: 70%; /* Выравнивание по вертикали */
+  left: 5%; /* Выравнивание по горизонтали */
+  /* Другие стили (размер, фон и т.д.) */
+  transform: translateX(-50%, -50%); /* Центрирование элемента */
+  animation: moveShadow 2s infinite;
+  z-index: 0;
+  mix-blend-mode: multiply;
+}
+
+
+@keyframes moveAndRotatePlanetrain {
+  0%, 100% {
+    transform: translateX(0) rotate(0deg);
+  }
+  50% {
+    transform: translateX(-100px) rotate(0deg);
+  }
+}
+
+@keyframes moveShadowtrain {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(0px);
+  }
+}
+
+#train {
+  animation: moveAndRotatePlanetrain 2s infinite;
+  margin-top: 30%;
+  z-index: +1;
+}
+
+#trainshadow {
+  /* Стили для тени */
+  position: absolute; /* Абсолютное позиционирование внутри контейнера */
+  top: 70%; /* Выравнивание по вертикали */
+  left: 50%; /* Выравнивание по горизонтали */
+  /* Другие стили (размер, фон и т.д.) */
+  transform: translateX(-50%, -50%); /* Центрирование элемента */
+  z-index: 0;
+  mix-blend-mode: multiply;
+}
+
+
+@keyframes scalePlaneroad {
+  0%, 100% {
+    transform: scale(1);
+    transform-origin: bottom;
+
+  }
+  50% {
+    transform: scale(1.1); /* Увеличиваем элемент на 20% в середине анимации */
+    transform-origin: bottom;
+  }
+}
+
+
+#road {
+  animation: scalePlaneroad 2s infinite;
+  margin-top: 0%;
+  z-index: +1;
+  mix-blend-mode: multiply;
+}
+
+#roadshadow {
+  /* Стили для тени */
+  position: absolute; /* Абсолютное позиционирование внутри контейнера */
+  top: 70%; /* Выравнивание по вертикали */
+  left: 50%; /* Выравнивание по горизонтали */
+  /* Другие стили (размер, фон и т.д.) */
+  transform: translateX(-50%, -50%); /* Центрирование элемента */
+  z-index: 0;
+  mix-blend-mode: multiply;
+  opacity: 0%;
+}
+
+
+@keyframes moveAndRotatemulti {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-40px) rotate(0deg);
+  }
+}
+
+@keyframes moveShadow {
+  0%, 100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(10px);
+    opacity: 0.5;
+  }
+}
+
+#multi {
+  animation: moveAndRotatemulti 2s infinite;
+  margin-top: -20%;
+}
+
+#multishadow {
+  /* Стили для тени */
+  position: absolute; /* Абсолютное позиционирование внутри контейнера */
+  top: 70%; /* Выравнивание по вертикали */
+  left: 5%; /* Выравнивание по горизонтали */
+  /* Другие стили (размер, фон и т.д.) */
+  transform: translateX(-50%, -50%); /* Центрирование элемента */
+  animation: moveShadow 2s infinite;
+  z-index: 0;
+  mix-blend-mode: multiply;
+}
+
+#storage {
+  mix-blend-mode: multiply;
+}
+
+#transit {
+  mix-blend-mode: multiply;
+}
+
+/* Стили для блока с формой обратной связи */
+.feedback-form {
+  display: flex;
+  background-color: #f5f5f5;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 25px;
+  margin: 40px 40px;
+  overflow: hidden;
+}
+
+/* Стили для изображения справа */
+.feedback-image {
+  flex: 1;
+  margin-right: 40px;
+  margin-left: 40px;
+}
+
+.feedback-image img {
+  position: relative;
+  margin-top: -200px;
+  margin-right: 40px;
+  rotate: 25deg;
+  scale: 150%;
+}
+
+/* Стили для контейнера с текстом и формой слева */
+.feedback-content {
+  flex: 2;
+  margin-left: 40px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+.feedback-content h1 {
+  font-size: 72px;
+  margin-bottom: 40px;
+  line-height: 72px;
+}
+
+.feedback-content h4 {
+  margin-bottom: 20px;
+}
+
+/* Стили для элементов формы */
+.form-group {
+  margin-bottom: 15px;
+  width: 60%;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea {
+  width: 100%;
+  padding: 20px;
+  border: 1px solid #ccc;
+  height: 40px;
+  border-radius: 25px;
+}
+
+.form-group textarea {
+  height: 100px;
+}
+
+button[type="submit"] {
+  font-size: 16px;
+  bottom: 40px;
+  left: 60px;
+  background-color: orange;
+  color: #fff;
+  border: none;
+  padding: 15px 40px;
+  border-radius: 50px;
+}
+
+button[type="submit"]:hover {
+  background-color: #000000;
+}
+
+/* Дополнительные стили по вашему усмотрению */
+.tracking-container {
+  position: relative;
+  margin-top: 40px;
+  width: 100%;
+  height: 700px;
+  padding: 100px;
+  border-radius: 0;
+  align-items: center;
+  background-image: url('tracking.png');
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  text-align: left;
+}
+
+.tracking-container h1 {
+  font-size: 72px;
+  margin: 0;
+}
+
+.tracking-container input[type="text"] {
+  width: 100%;
+  border-radius: 25px;
+  border: 1px solid #ffffff;
+  background: rgba(0, 0, 0, 0.2);
+  font-size: 16px;
+  margin-top: 40px;
+  padding-left: 40px;
+  height: 50px;
+  backdrop-filter: blur(10px); /* Размытие фона */
+  color: white;
+}
+
+.tracking-container button[type="submit"] {
+  font-size: 16px;
+  background-color: #ffa500;
+  color: #fff;
+  border: none;
+  padding: 15px 40px;
+  border-radius: 50px;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Добавляем переход цвета */
+
+  /* При наведении меняем цвет на черный */
+  &:hover {
+    background-color: #000;
+  }
+}
