@@ -929,9 +929,9 @@ button[type="submit"]:hover {
   margin-top: 20px;
   cursor: pointer;
   transition: background-color 0.3s ease; /* Добавляем переход цвета */
-
+}
   /* При наведении меняем цвет на черный */
 .tracking-container button[type="button"]:hover {
     background-color: #000;
 }
-}
+
