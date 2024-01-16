@@ -29,8 +29,9 @@
         <div class="banner">
             <p class="bold">Логистика <br> без границ</p>
             <div class="button-container"> <!-- Контейнер для кнопок -->
-                <button class="request-button">Оставить заявку</button><br>
-                <button class="track-button">Отследить груз</button>
+              <button class="request-button" onclick="scrollToBlock('feedback-form')">Оставить заявку</button><br>
+              <button class="track-button" onclick="scrollToBlock('tracking-container')">Отследить груз</button>
+
             </div>
             <p class="bold">200+</p>
             <p class="partner-info">Партнёров по миру</p>
@@ -221,7 +222,7 @@
     </div>
   </div>
 
- <div class="tracking-container">
+ <div class="tracking-container" id="tracking-container">
         <h1>Отследить груз</h1>
         <input type="text" id="trackingCode" placeholder="Введите номер вашего груза">
         <button type="button" id="trackButton">Отследить груз</button>
@@ -355,5 +356,14 @@ if (values.length > 0) {
             });
         }
     </script>
+<script>
+  function scrollToBlock(blockId) {
+      var block = document.getElementById(blockId);
+      if (block) {
+          block.scrollIntoView({ behavior: "smooth" });
+      }
+  }
+</script>  
+
 </body>
 </html>
