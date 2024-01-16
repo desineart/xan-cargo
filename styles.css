@@ -931,7 +931,7 @@ button[type="submit"]:hover {
   transition: background-color 0.3s ease; /* Добавляем переход цвета */
 
   /* При наведении меняем цвет на черный */
-  &:hover {
+.tracking-container button:hover {
     background-color: #000;
   }
 }
