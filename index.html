@@ -237,7 +237,7 @@
         function init() {
             gapi.load('client:auth2', function() {
                 gapi.client.init({
-                    clientId: 'Ваш_OAuth_2_0_клиентский_идентификатор',
+                    clientId: '674141718864-8r611egd21b9ob5t8115akjcvei3rm3t.apps.googleusercontent.com',
                     scope: 'https://www.googleapis.com/auth/spreadsheets.readonly',
                 }).then(function() {
                     googleAuth = gapi.auth2.getAuthInstance();
@@ -266,7 +266,7 @@
             }
 
             gapi.client.sheets.spreadsheets.values.get({
-                spreadsheetId: 'Ваш_ID_таблицы',
+                spreadsheetId: '113xg64Brc1jGgbpJoRCD_9AX4ZxOkTcWNHfjE7HpTKs',
                 range: 'Лист1',
                 valueRenderOption: 'FORMATTED_VALUE',
                 majorDimension: 'ROWS',
