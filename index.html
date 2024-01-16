@@ -278,7 +278,64 @@
             });
         }
     </script> 
-
+  <div class="feedback-form">
+    <div class="feedback-content">
+      <h1>Оставьте<br>заявку</h1>
+      <h4>Наши специалисты свяжутся<br>с вами в ближайшее время!</h4>
+      <form id="feedback-form" method="POST">
+        <!-- Ваши поля формы здесь -->
+        <div class="form-group">
+          <label for="name">Имя:</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+  
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+  
+        <div class="form-group">
+          <label for="message">Сообщение:</label>
+          <textarea id="message" rows="4" name="message" required></textarea>
+        </div>
+  
+        <button type="submit">Отправить</button>
+      </form>
+    </div>
+  
+    <div class="feedback-image">
+      <img src="feedback.png" alt="Изображение">
+    </div>
+  </div>
+  
+<script src="script.js"></script> 
+<script src="animation_prior.js"></script>    
+<script src="section.js"></script>  
+<script>
+    const form = document.getElementById('feedback-form');
+  
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+  
+      const formData = new FormData(form);
+      const url = 'https://hooks.zapier.com/hooks/catch/17614329/3gb01o6/'; // Замените на URL, который вы скопировали с Zapier
+  
+      try {
+        const response = await fetch(url, {
+          method: 'POST',
+          body: formData
+        });
+  
+        if (response.ok) {
+          alert('Данные успешно отправлены');
+        } else {
+          alert('Ошибка при отправке данных');
+        }
+      } catch (error) {
+        console.error('Произошла ошибка:', error);
+      }
+    });
+  </script>
 
 </body>
 </html>
