@@ -220,16 +220,79 @@
       <button>Выбрать</button>
     </div>
   </div>
-  <div id="trackingResult"></div> <!-- Элемент для отображения результатов -->
 
+ <div class="tracking-container">
+        <h1>Отследить груз</h1>
+        <input type="text" id="trackingCode" placeholder="Введите номер вашего груза">
+        <button type="submit" id="trackButton">Отследить груз</button>
+        <div id="trackingResults"></div>
+    </div>
 
-  <div class="tracking-container">
-    <h1>Отследить груз</h1>
-    <input type="text" id="trackingCode" placeholder="Введите номер вашего груза">
-    <button type="submit" id="trackButton">Отследить груз</button>
-    <div id="trackingResults"></div>
-</div>
-  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://apis.google.com/js/client.js?onload=init"></script>
+    <script>
+        function init() {
+            // Инициализация Google Sheets API
+            gapi.client.init({
+                apiKey: 'AIzaSyDmgGIgw22FOUWvl_dqnHu5w87w58nK5M8',
+                discoveryDocs: ["https://sheets.googleapis.com/$discovery/rest?version=v4"],
+            }).then(function() {
+                // API успешно инициализирован
+            }).catch(function(error) {
+                console.log('Ошибка при инициализации API: ' + error);
+            });
+        }
+
+        $("#trackButton").on("click", function() {
+            var trackingNumber = $("#trackingCode").val();
+            trackCargo(trackingNumber);
+        });
+
+        function trackCargo(trackingNumber) {
+            // Здесь вам нужно отправить запрос к Google Sheets API,
+            // чтобы получить информацию о грузе на основе trackingNumber
+            // и обновить содержимое div с id "trackingResults" с полученной информацией.
+            // Пример запроса:
+            gapi.client.sheets.spreadsheets.values.get({
+                spreadsheetId: '113xg64Brc1jGgbpJoRCD_9AX4ZxOkTcWNHfjE7HpTKs',
+                range: 'Лист1', // Имя вашего листа
+                valueRenderOption: 'FORMATTED_VALUE',
+                majorDimension: 'ROWS',
+            }).then(function(response) {
+                var values = response.result.values;
+                if (values.length > 0) {
+                    // Предполагается, что первая строка - заголовки столбцов,
+                    // а остальные строки содержат информацию о грузах.
+                    for (var i = 1; i < values.length; i++) {
+                        var cargoInfo = values[i];
+                        var cargoCode = cargoInfo[0]; // Номер груза
+                        if (cargoCode === trackingNumber) {
+                            // Если номер груза совпадает, выводим информацию
+                            var cargoDetails = "Номер груза: " + cargoInfo[0] + "<br>";
+                            cargoDetails += "ФИО Владельца Груза: " + cargoInfo[1] + "<br>";
+                            cargoDetails += "Происхождение Груза: " + cargoInfo[2] + "<br>";
+                            cargoDetails += "Место Назначения Груза: " + cargoInfo[3] + "<br>";
+                            cargoDetails += "Информация о Грузе: " + cargoInfo[4] + "<br>";
+                            cargoDetails += "Вес Груза (кг): " + cargoInfo[5] + "<br>";
+                            cargoDetails += "Статус 1: " + cargoInfo[6] + " (Дата 1: " + cargoInfo[7] + ")<br>";
+                            cargoDetails += "Статус 2: " + cargoInfo[8] + " (Дата 2: " + cargoInfo[9] + ")<br>";
+                            cargoDetails += "Статус 3: " + cargoInfo[10] + " (Дата 3: " + cargoInfo[11] + ")<br>";
+
+                            // Добавьте другие столбцы, если необходимо
+                            $("#trackingResults").html(cargoDetails);
+                            return;
+                        }
+                    }
+                    // Если номер груза не найден
+                    $("#trackingResults").html("Груз с номером " + trackingNumber + " не найден.");
+                } else {
+                    $("#trackingResults").html("Таблица пуста.");
+                }
+            }).catch(function(error) {
+                console.log('Ошибка при запросе данных: ' + error);
+            });
+        }
+    </script>  
 
   <div class="feedback-form">
     <div class="feedback-content">
@@ -239,17 +302,17 @@
         <!-- Ваши поля формы здесь -->
         <div class="form-group">
           <label for="name">Имя:</label>
-          <input type="text" id="name" required>
+          <input type="text" id="name" name="name" required>
         </div>
   
         <div class="form-group">
           <label for="email">Email:</label>
-          <input type="email" id="email" required>
+          <input type="email" id="email" name="email" required>
         </div>
   
         <div class="form-group">
           <label for="message">Сообщение:</label>
-          <textarea id="message" rows="4" required></textarea>
+          <textarea id="message" rows="4" name="message" required></textarea>
         </div>
   
         <button type="submit">Отправить</button>
@@ -289,63 +352,5 @@
       }
     });
   </script>
-<script>
-document.getElementById('trackButton').addEventListener('click', function() {
-    var trackingCode = document.getElementById('trackingCode').value;
-    fetch(`/track?code=${trackingCode}`)
-        .then(response => response.json())
-        .then(data => {
-            var resultsDiv = document.getElementById('trackingResults');
-            if (data.success) {
-                // Создаем и добавляем контент в resultsDiv
-                var content = '<h3>Информация о грузе:</h3>';
-                content += '<ul>';
-                data.data.forEach(item => {
-                    content += `<li>${item}</li>`; // Предполагается, что каждый элемент массива - это строка данных
-                });
-                content += '</ul>';
-                resultsDiv.innerHTML = content;
-            } else {
-                // Если груз не найден, выводим сообщение
-                resultsDiv.innerHTML = '<p>Груз не найден.</p>';
-            }
-        })
-        .catch(error => {
-            console.error('Ошибка:', error);
-            resultsDiv.innerHTML = '<p>Произошла ошибка при запросе данных.</p>';
-        });
-});
-    </script>
-<script>
-    const express = require('express');
-const getSheetData = require('./getSheetData'); // Убедитесь, что путь к файлу верный
-const app = express();
-
-const sheetId = '113xg64Brc1jGgbpJoRCD_9AX4ZxOkTcWNHfjE7HpTKs';
-const apiKey = 'AIzaSyDmgGIgw22FOUWvl_dqnHu5w87w58nK5M8';
-
-app.get('/track', async (req, res) => {
-    try {
-        const trackingCode = req.query.code;
-        const data = await getSheetData(sheetId, apiKey);
-        const trackingInfo = data.find(row => row[0] === trackingCode);
-
-        if (trackingInfo) {
-            res.json({ success: true, data: trackingInfo });
-        } else {
-            res.json({ success: false, message: 'Груз не найден.' });
-        }
-    } catch (error) {
-        console.error('Ошибка при получении данных:', error);
-        res.status(500).send('Ошибка на сервере');
-    }
-});
-
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.log(`Сервер запущен на порту ${PORT}`);
-});
-
-</script>    
 </body>
 </html>
