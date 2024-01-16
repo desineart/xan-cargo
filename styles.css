@@ -933,4 +933,4 @@ button[type="submit"]:hover {
   /* При наведении меняем цвет на черный */
 .tracking-container button[type="button"]:hover {
     background-color: #000;
-  }
+}
