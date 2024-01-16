@@ -234,7 +234,7 @@
         function init() {
             // Инициализация Google Sheets API
             gapi.client.init({
-                apiKey: 'AIzaSyDmgGIgw22FOUWvl_dqnHu5w87w58nK5M8',
+                apiKey: "AIzaSyDmgGIgw22FOUWvl_dqnHu5w87w58nK5M8",
                 discoveryDocs: ["https://sheets.googleapis.com/$discovery/rest?version=v4"],
             }).then(function() {
                 // API успешно инициализирован
@@ -254,7 +254,7 @@
             // и обновить содержимое div с id "trackingResults" с полученной информацией.
             // Пример запроса:
             gapi.client.sheets.spreadsheets.values.get({
-                spreadsheetId: '113xg64Brc1jGgbpJoRCD_9AX4ZxOkTcWNHfjE7HpTKs',
+                spreadsheetId: "113xg64Brc1jGgbpJoRCD_9AX4ZxOkTcWNHfjE7HpTKs",
                 range: 'Лист1', // Имя вашего листа
                 valueRenderOption: 'FORMATTED_VALUE',
                 majorDimension: 'ROWS',
