@@ -1226,7 +1226,7 @@ button[type="submit"]:hover {
   color: white;
 }
 
-.tracking-container button[type="submit"] {
+.tracking-container button[type="button"] {
   font-size: 16px;
   background-color: #ffa500;
   color: #fff;
@@ -1265,7 +1265,7 @@ button[type="submit"]:hover {
       color: white;
     }
     
-    .tracking-container button[type="submit"] {
+    .tracking-container button[type="button"] {
       font-size: 16px;
       background-color: #ffa500;
       color: #fff;
