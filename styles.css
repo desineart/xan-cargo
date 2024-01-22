@@ -1,102 +1,180 @@
 /* Обнуляем границы у всех элементов */
 * {
   margin: 0;
-  margin-top: 10px;
+  margin-top: 0px;
   padding: 0;
   border: 0;
   outline: 0;
   box-sizing: border-box; /* Учитываем границы и отступы в размерах элементов */
 }
-
-/* Добавляем отступы с обеих сторон страницы */
-.page-container {
-  margin: 0px; /* Отступы по бокам для общего контейнера */
-}
-
-/* Стили для всех элементов, кроме баннера */
-.element {
-  border: 0px solid transparent; /* Обнуляем границу у элементов */
-}
-
-/* Стили для шапки */
+/* Общие стили */
 header {
-  background-color: white;
-  margin-right: 20px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  padding: 20px;
+  margin-top: 20px;
+  padding: 10px 40px;
 }
 
-/* Стили для навигационного меню */
-nav ul {
-  margin-left: 20px;
-  list-style: none;
-  display: flex;
-  align-items: center;
-}
-
-nav ul li {
-  margin-right: 20px;
-}
-
-/* Отступ слева для пунктов меню "Направления" */
-.directions-menu {
-  margin-left: 10px;
-}
-
-nav ul li:last-child {
-  margin-right: 0;
-}
-
-nav ul li a {
-  text-decoration: none;
-  color: #000;
-  font-weight: bold;
-  transition: color 0.3s; /* Добавляем анимацию для цвета текста */
-}
-
-nav ul li a:hover {
-  color: #ffa500; /* Новый цвет текста при наведении */
-}
-
-/* Стили для логотипа */
 .logo {
-  text-align: center;
-  margin-left: 50px;
-  flex: 1;
+  font-size: 24px;
 }
 
-.logo img {
-  max-width: 20%;
-  height: auto;
+.logo1 {
+  font-size: 36px;
 }
 
-/* Стили для контактных данных */
-.contact {
-  display: flex;
-  align-items: center;
+/* Стили для десктопной версии */
+@media (min-width: 800px) {
+  .desktop-menu {
+    position: absolute;
+    left: 40px;
 }
 
-.contact a {
-  margin-right: 10px;
-  text-decoration: none;
-  color: #000;
+.desktop-menu a {
+    margin-right: 15px;
+    text-decoration: none;
+    color: #333;
+    transition: color 0.3s ease; /* Анимация изменения цвета */
 }
 
-/* Стили для кнопки с номером */
-.phone {
-  padding: 15px 40px;
-  border-radius: 25px;
-  border: 2px solid #000; /* Граница у кнопки */
-  transition: background-color 0.3s, color 0.3s, transform 0.3s; /* Добавляем анимацию для background-color, color и transform */
+/* Анимация при наведении */
+.desktop-menu a:hover {
+    color: #ffa500; /* Цвет при наведении */
 }
 
-.phone:hover {
-  background-color: #ffffff; /* Новый цвет фона при наведении */
-  color: rgb(0, 0, 0); /* Новый цвет текста при наведении */
-  transform: scale(1.05); /* Увеличиваем кнопку при наведении (можете изменить значение по вашему вкусу) */
+.social-icons {
+  position: absolute;
+  margin-right: 120px;
+  margin-top: 20px;
+  right: 100px; /* Увеличьте это значение, чтобы учесть ширину кнопки с номером телефона */
 }
+
+.social-icons a {
+    margin-left: 0px;
+    margin-bottom: 20px;
+    color: #333;
+    text-decoration: none;
+    display: inline-block; /* Убедитесь, что ссылки выступают как блочные элементы */
+    transition: transform 0.3s ease; /* Анимация увеличения */
+}
+
+.social-icons a:hover {
+    transform: scale(1.1); /* Увеличение при наведении */
+}
+
+.social-icons a:hover {
+    transform: scale(1.1); /* Увеличение только для иконки, на которую наведен курсор */
+}
+
+.phone-button {
+    position: absolute;
+    right: 40px; /* или другое значение, подходящее для вашего дизайна */
+    margin-left: 10px;
+    border: 2px solid rgb(0, 0, 0); /* Белая обводка кнопки */
+    background-color: #ffa60000;
+    color: rgb(0, 0, 0);
+    padding: 10px 15px;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: transform 0.3s ease; /* Анимация происходит в течение 0.3 секунды */
+  }
+  
+  .phone-button:hover {
+      transform: scale(1.1); /* Увеличение размера кнопки на 10% */
+  }
+
+  .hamburger-menu, .mobile-menu {
+      display: none;
+  }
+}
+
+/* Стили для мобильной версии */
+@media (max-width: 800px) {
+  header {
+      margin-top: 20px;
+      justify-content: flex-start;
+  }
+
+  .logo {
+      margin-left: 10px;
+  }
+
+  .desktop-menu, .social-icons, .phone-button {
+      display: none;
+  }
+
+
+  .hamburger-menu {
+    cursor: pointer;
+    width: 30px; /* Ширина иконки */
+    height: 30px; /* Высота иконки */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    position: absolute;
+    right: 40px;
+    z-index: 1000;
+    align-items: center;
+}
+
+.hamburger-menu span {
+    display: block;
+    height: 3px; /* Высота линии */
+    width: 100%;
+    background-color: black; /* Цвет линии */
+    transition: all 0.3s ease;
+}
+
+/* Анимация для превращения в крестик */
+.hamburger-menu.active span:nth-child(1) {
+    transform: translateY(7.5px) rotate(45deg);
+}
+
+.hamburger-menu.active span:nth-child(2) {
+    transform: translateY(-7.5px) rotate(-45deg);
+}
+
+
+  .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: orange;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding-top: 0px;
+      z-index: 1;
+  }
+
+  .mobile-menu.active {
+      display: flex;
+  }
+
+  .mobile-menu a, .social-icons-mobile a {
+      display: block;
+      position: relative;
+      margin-top: 50px;
+      margin-bottom: 20px;
+      font-size: 18px;
+      color: rgb(0, 0, 0);
+      text-decoration: none;
+  }
+
+  .phone-button-mobile {
+      margin-top: 40px;
+      background-color: #000000;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 50px;
+      text-decoration: none;
+  }
+}
+
 
 /* Стили для баннера */
 .banner {
@@ -171,15 +249,24 @@ nav ul li a:hover {
   color: white; /* Новый цвет текста при наведении */
   transform: scale(1.05); /* Увеличиваем кнопку при наведении (можете изменить значение по вашему вкусу) */
 }
-
 /* Стили для текста "200+" и "50+" */
-.bold {
+
+.bold-title {
+  margin: 0;
+  margin-left: 40px;
+  margin-top:10px;
+  font-size: 72px;
+  font-weight: bold;
+}
+
+.bold{
   margin: 0;
   margin-left: 40px;
   margin-top: 10px;
   font-size: 72px;
   font-weight: bold;
 }
+
 
 /* Стили для информации о партнерах и покрытии */
 .partner-info, .coverage-info {
@@ -211,6 +298,43 @@ nav ul li a:hover {
   right: 150px; /* Отступ справа */
   max-width: 1000px; /* Максимальная ширина изображения */
   height: auto;
+}
+@media (max-width: 800px) {
+  /* Изменение размера баннера */
+  .banner {
+      height: auto; /* Автоматический размер по высоте */
+      padding: 15px; /* Уменьшенный внутренний отступ */
+  }
+
+  /* Скрываем изображение и тексты класса 'bold' в баннере */
+  .banner-image, .banner p.bold,.partner-info, .coverage-info {
+    display: none;
+  }
+
+  /* Перемещение и выравнивание текста в правом верхнем углу */
+  .banner-text-container {
+      position: static; /* Отменяем абсолютное позиционирование */
+      margin-top: 20px; /* Добавляем отступ сверху */
+      text-align: left; /* Выравнивание текста по левому краю */
+      margin-bottom: 40px;
+  }
+
+  /* Адаптация стилей текста */
+  .banner-text {
+    margin-left: 40px;
+    margin-bottom: 0px;
+    text-align: left;
+    font-size: 24px; /* Меньший размер шрифта */
+  }
+
+  /* Стили для кнопок, если нужно */
+  .button-container button {
+      font-size: 24px; /* Адаптация размера шрифта для кнопок */
+      padding: 25px 40px; /* Отступы внутри кнопки */
+      border-radius: 50px;
+      margin-top: 20px;
+
+  }
 }
 
 /* Для текста используйте системный шрифт San Francisco или аналогичный */
@@ -250,6 +374,30 @@ body {
   margin-right: 90px;
   font-weight: bold;
 }
+
+@media (max-width: 800px) {
+  .about-us {
+    flex-direction: column; /* Меняем направление на вертикальное */
+  }
+
+  .about-us-left, .about-us-right {
+    flex: none; /* Отменяем гибкость элементов */
+    margin-right: 0; /* Обнуляем отступ справа, если он был */
+    margin-left: 0; /* Обнуляем отступ слева, если он был */
+  }
+
+  .about-us-title {
+    margin-left: 20px; /* Адаптируем отступ слева для заголовка */
+    margin-right: 20px; /* Адаптируем отступ справа для заголовка */
+  }
+
+  .about-us-description,
+  .about-us-details {
+    margin-right: 20px; /* Адаптируем отступ справа для текста */
+    margin-left: 20px; /* Адаптируем отступ слева для текста */
+  }
+}
+
 
 .timeline-container {
   position: relative;
@@ -502,6 +650,39 @@ font-weight: bold;
   font-size: 72px;
   font-weight: bold;
   color: #ffa500;
+}
+
+
+@media (max-width: 800px) {
+  /* Скрываем элементы, которые не должны отображаться на мобильных устройствах */
+  .timeline-line, .circle-prior, .truck, .timeline-text {
+    display: none;
+  }
+  .timeline-container {
+    margin-bottom: 70px;
+  }
+
+  /* Изменение стилей блоков преимуществ */
+  .timeline-item {
+    position: static; /* Отменяем абсолютное позиционирование */
+    display: flex;
+    flex-direction: column; /* Элементы внутри блока располагаются вертикально */
+    align-items: center; /* Выравнивание по центру */
+    margin-bottom: 0px; /* Отступ между блоками */
+  }
+
+  .timeline-content {
+    text-align: center; /* Выравнивание текста по центру */
+    max-width: 85%; /* Максимальная ширина текста */
+  }
+
+  .item2, .item4 {
+    transform: scaleX(1); /* Отменяем зеркальное отображение блоков */
+  }
+
+  .item2 .timeline-content, .item4 .timeline-content {
+    transform: scaleX(1); /* Отменяем зеркальное отображение текста в блоках */
+  }
 }
 
 .services-block {
@@ -800,6 +981,101 @@ font-weight: bold;
 #transit {
   mix-blend-mode: multiply;
 }
+
+
+
+/* Стили для мобильных устройств */
+@media (max-width: 768px) {
+
+  .service-description-button {
+    display: none;
+  }
+
+  .service-description-text {
+    display: none;
+  }
+
+  .service-item::before {
+    display: none; /* Скрываем круги */
+}
+
+  .services-block {
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+  }
+
+  .services-images {
+      order: 1;
+      position: relative;
+      height: 500px;
+      width: 100%;
+  }
+  .service-image-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.service-image-container.active {
+  visibility: visible; /* Показать активный контейнер изображений */
+}
+
+.service-image {
+  width: 100%; /* Пример, установите нужный размер или оставьте auto */
+  height: auto; /* Пример, установите нужный размер или оставьте auto */
+}
+
+  .services-navigation {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: 40px;
+      order: 3;
+  }
+
+  .services-list {
+      display: flex;
+      flex-grow: 1;
+      justify-content: center;
+      overflow-x: auto;
+      text-align: center;
+  }
+  .services-list ul {
+    /* Другие стили */
+    white-space: nowrap; /* Предотвратить перенос текста на новую строку */
+}
+
+
+  .service-item {
+      display: none; /* Скрываем все элементы */
+  }
+
+  .service-item.active {
+      display: block; /* Показываем только активный элемент */
+  }
+
+  .nav-button {
+      width: 30px; /* Ширина кнопки */
+      height: 30px; /* Высота кнопки */
+      cursor: pointer;
+  }
+
+  .service-description {
+      order: 2;
+  }
+}
+
+/* Скрытие стрелок на десктопных версиях */
+@media (min-width: 769px) {
+  .nav-button {
+      display: none;
+  }
+}
+
 
 /* Стили для блока с формой обратной связи */
 .feedback-form {
