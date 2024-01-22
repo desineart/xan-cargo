@@ -7,6 +7,10 @@
   outline: 0;
   box-sizing: border-box; /* Учитываем границы и отступы в размерах элементов */
 }
+body {
+  background-color: #ffffff; /* Замените на цвет, который вы хотите использовать */
+}
+
 /* Общие стили */
 header {
   display: flex;
