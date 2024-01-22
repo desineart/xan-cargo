@@ -32,7 +32,7 @@ header {
 }
 
 .desktop-menu a {
-    margin-right: 15px;
+    margin-right: 0px;
     text-decoration: none;
     color: #333;
     transition: color 0.3s ease; /* Анимация изменения цвета */
