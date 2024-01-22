@@ -28,7 +28,7 @@ header {
 @media (min-width: 800px) {
   .desktop-menu {
     position: absolute;
-    left: 40px;
+    left: 0px;
 }
 
 .desktop-menu a {
