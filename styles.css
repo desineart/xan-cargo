@@ -113,7 +113,7 @@ header {
     flex-direction: column;
     justify-content: space-around;
     position: absolute;
-    right: 40px;
+    right: 0px;
     z-index: 1000;
     align-items: center;
 }
