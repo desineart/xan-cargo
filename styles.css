@@ -1251,6 +1251,9 @@ button[type="submit"]:hover {
     .tracking-container {
       width: 100%;
     }
+    .trackingResults {
+      margin-left: -40px;
+    }
     .tracking-container input[type="text"] {
       width: 150%;
       border-radius: 25px;
