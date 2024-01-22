@@ -7,31 +7,71 @@
     <title>Ваш Лендинг</title>
 </head>
 <body>
-    <div class="page-container"> <!-- Создаем контейнер для всего контента -->
-        <header class="element">
-            <nav>
-                <ul>
-                    <li class="directions-menu"><a href="#" class="element">Направления</a></li>
-                    <li><a href="#" class="element">Услуги</a></li>
-                    <li><a href="#" class="element">Партнеры</a></li>
-                </ul>
-            </nav>
-            <div class="logo element">
-                <img src="Xan_Cargo_logo.png" alt="Логотип">
-            </div>
-            <div class="contact element">
-                <a href="#" class="element"><img src="tg.png" alt="Иконка соцсети"></a>
-                <a href="#" class="element"><img src="whatsapp.png" alt="Иконка соцсети"></a>
-                <a href="tel:+998903204458" class="phone element">+99890 320 44 58</a>
-            </div>
-        </header>
+    <header>
+    <!-- Общие элементы для всех версий -->
+    <div class="logo">Логотип</div>
+
+    <!-- Элементы для десктопной версии -->
+    <nav class="desktop-menu">
+        <a href="#services">Услуги</a>
+        <a href="#partners">Партнеры</a>
+        <a href="#directions">Направления</a>
+    </nav>
+    <div class="social-icons">
+      <a href="http://facebook.com">
+          <img src="whatsapp.png" alt="Facebook">
+      </a>
+      <a href="http://twitter.com">
+          <img src="tg.png" alt="Twitter">
+      </a>
+  </div>
+  
+  <a href="tel:+71234567890" class="phone-button">+7 123 456 7890</a>
+
+
+    <!-- Элементы для мобильной версии -->
+    <!-- Замена иконки "гамбургера" -->
+<div class="hamburger-menu">
+  <span></span>
+  <span></span>
+</div>
+
+    <div class="mobile-menu">
+      <div class="logo1">Логотип</div>
+
+        <a href="#services">Услуги</a>
+        <a href="#partners">Партнеры</a>
+        <a href="#directions">Направления</a>
+        <div class="phone-button-mobile">+7 123 456 7890</div>
+        <div class="social-icons-mobile">
+          <a href="http://facebook.com">
+              <img src="whatsapp.png" alt="Facebook">
+          </a>
+          <a href="http://twitter.com">
+              <img src="tg.png" alt="Twitter">
+          </a>
+      </div>
+    </div>
+</header>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    var hamburger = document.querySelector('.hamburger-menu');
+    var mobileMenu = document.querySelector('.mobile-menu');
+
+    hamburger.addEventListener('click', function() {
+        this.classList.toggle('active');
+        mobileMenu.classList.toggle('active');
+    });
+});
+</script>
+  
         
         <div class="banner">
-            <p class="bold">Логистика <br> без границ</p>
+            <p class="bold-title">Логистика <br> без границ</p>
             <div class="button-container"> <!-- Контейнер для кнопок -->
-              <button class="request-button" onclick="scrollToBlock('feedback-form')">Оставить заявку</button><br>
-              <button class="track-button" onclick="scrollToBlock('tracking-container')">Отследить груз</button>
-
+                <button class="request-button">Оставить заявку</button><br>
+                <button class="track-button">Отследить груз</button>
             </div>
             <p class="bold">200+</p>
             <p class="partner-info">Партнёров по миру</p>
@@ -152,75 +192,134 @@
    </div>
 </div>
 
-
 <div class="services-block">
-    <div class="services-images">
-      <div class="service-image-container" id="air-container" style="display: none;">
-        <img src="air.png" id="air" class="service-image" alt="Авиаперевозки">
-        <img src="airshadow.png" id="airshadow" class="service-shadow" alt="Тень самолета">
-      </div>
-      <div class="service-image-container" id="train-container" style="display: none;">
-        <img src="train.png" id="train" class="service-image" alt="Железнодорожные перевозки">
-        <img src="trainshadow.png" id="trainshadow" class="service-shadow" alt="Тень поезда">
-      </div>
-      
-      <!-- Добавьте аналогичные блоки для других услуг здесь -->
-      
-      <div class="service-image-container" id="road-container" style="display: none;">
-        <img src="road.png" id="road" class="service-image" alt="Автоперевозки">
-      <!--  <img src="roadshadow.png" id="roadshadow" class="service-shadow" alt="Тень грузовика">-->
-      </div>
-      
-      <div class="service-image-container" id="multi-container" style="display: none;">
-        <img src="multi.png" id="multi" class="service-image" alt="Мульти модальные перевозки">
-      <!--  <img src="multishadow.png" id="multishadow" class="service-shadow" alt="Тень мультигруза">-->
-      </div>
-      
-      <div class="service-image-container" id="storage-container" style="display: none;">
-        <img src="storage.png" id="storage" class="service-image" alt="Услуги по складированию">
-      <!--  <img src="storageshadow.png" id="storageshadow" class="service-shadow" alt="Тень склада">-->
-      </div> 
-      
-      <div class="service-image-container" id="transit-container" style="display: none;">
-        <img src="transit.png" id="transit" class="service-image" alt="Услуги транзитного перенаправления">
-       <!-- <img src="transitshadow.png" id="transitshadow" class="service-shadow" alt="Тень транзита"> -->
-      </div>
-      
-      <div class="service-image-container" id="consult-container" style="display: none;">
-        <img src="consult.png" id="consult" class="service-image" alt="Консалтинговая услуга">
-        <!-- img src="consultshadow.png" id="consultshadow" class="service-shadow" alt="Тень консалтинга" -->
-      </div>
-      <!-- Добавьте аналогичные блоки для других услуг -->
+  <div class="services-images">
+    <div class="service-image-container" id="air-container" style="display: none;">
+      <img src="air.png" id="air" class="service-image" alt="Авиаперевозки">
+      <img src="airshadow.png" id="airshadow" class="service-shadow" alt="Тень самолета">
+    </div>
+    <div class="service-image-container" id="train-container" style="display: none;">
+      <img src="train.png" id="train" class="service-image" alt="Железнодорожные перевозки">
+      <img src="trainshadow.png" id="trainshadow" class="service-shadow" alt="Тень поезда">
     </div>
     
-    <div class="services-list">
-      <ul>
-        <li class="service-item active" data-target="air">Авиаперевозки</li>
-        <li class="service-item" data-target="train">Железнодорожные перевозки</li>
-        <li class="service-item" data-target="road">Автоперевозки</li>
-        <li class="service-item" data-target="multi">Мульти модальные перевозки</li>
-        <li class="service-item" data-target="storage">Услуги по складированию</li>
-        <li class="service-item" data-target="transit">Услуги транзитного перенаправления</li>
-        <li class="service-item" data-target="consult">Консалтинговая услуга</li>
-      </ul>
+    <!-- Добавьте аналогичные блоки для других услуг здесь -->
+    
+    <div class="service-image-container" id="road-container" style="display: none;">
+      <img src="road.png" id="road" class="service-image" alt="Автоперевозки">
+    <!--  <img src="roadshadow.png" id="roadshadow" class="service-shadow" alt="Тень грузовика">-->
     </div>
-    <div class="service-description">
-      <h1>Hаши услуги</h1>
+    
+    <div class="service-image-container" id="multi-container" style="display: none;">
+      <img src="multi.png" id="multi" class="service-image" alt="Мульти модальные перевозки">
+    <!--  <img src="multishadow.png" id="multishadow" class="service-shadow" alt="Тень мультигруза">-->
     </div>
-    <div class="service-description-text">
-      <p class="air-description" style="display: none;">Авиаперевозки - это быстрый и надежный способ доставки ваших грузов по всему миру. Мы предоставляем высококачественные услуги и гарантируем сохранность вашего груза. Выберите нас для доставки ваших товаров вовремя и с комфортом.</p>
-      <p class="train-description" style="display: none;">Железнодорожные перевозки вагонами и контейнерами - это надежный способ перевозки грузов на дальние расстояния. Наши услуги обеспечивают высокую скорость и сохранность вашего груза.</p>
-      <!-- Добавьте тексты описания для остальных разделов здесь -->
-      <p class="road-description" style="display: none;">Автоперевозки - это удобный способ доставки грузов по дорогам. Наши профессиональные водители и современные грузовики гарантируют безопасность и своевременную доставку.</p>
-      <p class="multi-description" style="display: none;">Мульти модальные перевозки - это комплексный подход к доставке грузов, использующий несколько видов транспорта. Мы обеспечиваем эффективность и экономию средств.</p>
-      <p class="storage-description" style="display: none;">Услуги по складированию в странах ЕС, Китая и Турции. Надежное и безопасное хранение вашего груза с возможностью оперативной доставки.</p>
-      <p class="transit-description" style="display: none;">Услуги транзитного перенаправления грузов и отправка в страны СНГ из Узбекистана. Мы обеспечиваем эффективную транспортировку вашего груза.</p>
-      <p class="consult-description" style="display: none;">Консалтинговая услуга по импортным закупкам поможет вам сделать правильный выбор при закупке товаров из-за рубежа. Наши эксперты всегда готовы вам помочь.</p>
+    
+    <div class="service-image-container" id="storage-container" style="display: none;">
+      <img src="storage.png" id="storage" class="service-image" alt="Услуги по складированию">
+    <!--  <img src="storageshadow.png" id="storageshadow" class="service-shadow" alt="Тень склада">-->
+    </div> 
+    
+    <div class="service-image-container" id="transit-container" style="display: none;">
+      <img src="transit.png" id="transit" class="service-image" alt="Услуги транзитного перенаправления">
+     <!-- <img src="transitshadow.png" id="transitshadow" class="service-shadow" alt="Тень транзита"> -->
     </div>
-    <div class="service-description-button">
-      <button>Выбрать</button>
+    
+    <div class="service-image-container" id="consult-container" style="display: none;">
+      <img src="consult.png" id="consult" class="service-image" alt="Консалтинговая услуга">
+      <!-- img src="consultshadow.png" id="consultshadow" class="service-shadow" alt="Тень консалтинга" -->
     </div>
+    <!-- Добавьте аналогичные блоки для других услуг -->
   </div>
+  <div class="services-navigation">
+    <div class="nav-button prev-service">←</div>
+
+  <div class="services-list">
+    <ul>
+      <li class="service-item active" data-target="air">Авиаперевозки</li>
+      <li class="service-item" data-target="train">Железнодорожные перевозки</li>
+      <li class="service-item" data-target="road">Автоперевозки</li>
+      <li class="service-item" data-target="multi">Мульти модальные перевозки</li>
+      <li class="service-item" data-target="storage">Услуги по складированию</li>
+      <li class="service-item" data-target="transit">Услуги транзитного перенаправления</li>
+      <li class="service-item" data-target="consult">Консалтинговая услуга</li>
+    </ul>
+  </div>
+
+  <div class="nav-button next-service">→</div>
+</div>
+  <!-- Кнопки для навигации услуг -->
+
+  <div class="service-description">
+    <h1>Hаши услуги</h1>
+  </div>
+  <div class="service-description-text">
+    <p class="air-description" style="display: none;">Авиаперевозки - это быстрый и надежный способ доставки ваших грузов по всему миру. Мы предоставляем высококачественные услуги и гарантируем сохранность вашего груза. Выберите нас для доставки ваших товаров вовремя и с комфортом.</p>
+    <p class="train-description" style="display: none;">Железнодорожные перевозки вагонами и контейнерами - это надежный способ перевозки грузов на дальние расстояния. Наши услуги обеспечивают высокую скорость и сохранность вашего груза.</p>
+    <!-- Добавьте тексты описания для остальных разделов здесь -->
+    <p class="road-description" style="display: none;">Автоперевозки - это удобный способ доставки грузов по дорогам. Наши профессиональные водители и современные грузовики гарантируют безопасность и своевременную доставку.</p>
+    <p class="multi-description" style="display: none;">Мульти модальные перевозки - это комплексный подход к доставке грузов, использующий несколько видов транспорта. Мы обеспечиваем эффективность и экономию средств.</p>
+    <p class="storage-description" style="display: none;">Услуги по складированию в странах ЕС, Китая и Турции. Надежное и безопасное хранение вашего груза с возможностью оперативной доставки.</p>
+    <p class="transit-description" style="display: none;">Услуги транзитного перенаправления грузов и отправка в страны СНГ из Узбекистана. Мы обеспечиваем эффективную транспортировку вашего груза.</p>
+    <p class="consult-description" style="display: none;">Консалтинговая услуга по импортным закупкам поможет вам сделать правильный выбор при закупке товаров из-за рубежа. Наши эксперты всегда готовы вам помочь.</p>
+  </div>
+  <div class="service-description-button">
+    <button>Выбрать</button>
+  </div>
+</div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+    const serviceItems = document.querySelectorAll('.service-item');
+    const imageContainers = document.querySelectorAll('.service-image-container');
+    const descriptions = document.querySelectorAll('.service-description-text p');
+    const shadows = document.querySelectorAll('.service-shadow');
+
+    const prevButton = document.querySelector('.prev-service');
+    const nextButton = document.querySelector('.next-service');
+    let activeIndex = Array.from(serviceItems).findIndex(item => item.classList.contains('active'));
+
+    function changeService(delta) {
+        activeIndex = (activeIndex + delta + serviceItems.length) % serviceItems.length;
+        serviceItems[activeIndex].click();
+    }
+
+    serviceItems.forEach((item, index) => {
+      item.addEventListener('click', () => {
+        // Удаляем класс "active" у всех элементов и скрываем их содержимое
+        serviceItems.forEach(i => i.classList.remove('active'));
+        imageContainers.forEach(container => container.style.display = 'none');
+        descriptions.forEach(description => description.style.display = 'none');
+        shadows.forEach(shadow => shadow.style.opacity = '0');
+  
+        // Активируем выбранный элемент
+        item.classList.add('active');
+        const target = item.getAttribute('data-target');
+        document.querySelector(`#${target}-container`).style.display = 'block';
+        document.querySelector(`.${target}-description`).style.display = 'block';
+        document.querySelector(`#${target}shadow`).style.opacity = '1';
+
+        activeIndex = index;
+  
+        // Добавляем анимацию, если необходимо
+        if (target === 'air') {
+          document.querySelector(`#${target}`).classList.add('animate');
+        } else {
+          document.querySelector(`#${target}`).classList.remove('animate');
+        }
+      });
+    });
+
+    prevButton.addEventListener('click', () => changeService(-1));
+    nextButton.addEventListener('click', () => changeService(1));
+  
+    // Автоматически активируем первую услугу при загрузке страницы
+    if (serviceItems.length > 0) {
+      serviceItems[0].click();
+    }
+});
+
+    </script>
 
  <div class="tracking-container" id="tracking-container">
         <h1>Отследить груз</h1>
