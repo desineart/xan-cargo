@@ -427,7 +427,7 @@ if (values.length > 0) {
     Поиск информации о грузе по номеру
     for (var i = 1; i < values.length; i++) {
         var cargoInfo = values[i];
-        var cargoCode = cargoInfo[0]; // Номер груза
+        var cargoCode = cargoInfo[3]; // Номер груза
         if (cargoCode === trackingNumber) {
             // Отобразить информацию о грузе
             var cargoDetails = "<strong>Номер груза:</strong> " + cargoInfo[3] + "<br>";
