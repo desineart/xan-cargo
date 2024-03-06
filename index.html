@@ -431,14 +431,13 @@ if (values.length > 0) {
         if (cargoCode === trackingNumber) {
             // Отобразить информацию о грузе
             var cargoDetails = "<strong>Номер груза:</strong> " + cargoInfo[3] + "<br>";
-            cargoDetails += "<strong>ФИО Владельца Груза:</strong> " + cargoInfo[0] + "<br>";
-            cargoDetails += "<strong>Происхождение Груза:</strong> " + cargoInfo[1] + "<br>";
-            cargoDetails += "<strong>Место Назначения Груза:</strong> " + cargoInfo[2] + "<br>";
-            cargoDetails += "<strong>Информация о Грузе:</strong> " + cargoInfo[4] + "<br>";
-            cargoDetails += "<strong>Вес Груза (кг):</strong> " + cargoInfo[5] + "<br>";
-            cargoDetails += "<strong>Статус 1:</strong> " + cargoInfo[6] + " (Дата 1: " + cargoInfo[7] + ")<br>";
-            cargoDetails += "<strong>Статус 2:</strong> " + cargoInfo[8] + " (Дата 2: " + cargoInfo[9] + ")<br>";
-            cargoDetails += "<strong>Статус 3:</strong> " + cargoInfo[10] + " (Дата 3: " + cargoInfo[11] + ")<br>";
+            cargoDetails += "<strong>Заказчик:</strong> " + cargoInfo[0] + "<br>";
+            cargoDetails += "<strong>№ перевозки:</strong> " + cargoInfo[1] + "<br>";
+            cargoDetails += "<strong>Страна начала перевозки:</strong> " + cargoInfo[2] + "<br>";
+            cargoDetails += "<strong>Место назначения груза:</strong> " + cargoInfo[4] + "<br>";
+            cargoDetails += "<strong>Дата забора груза:</strong> " + cargoInfo[5] + "<br>";
+            cargoDetails += "<strong>Дата доставки груза:</strong> " + cargoInfo[6] + " (Дата 1: " + cargoInfo[7] + ")<br>";
+            cargoDetails += "<strong>Местонахождения груза:</strong> " + cargoInfo[8] + " (Дата 2: " + cargoInfo[9] + ")<br>";
 
             // Добавьте другие столбцы, если необходимо
             document.getElementById("trackingResults").innerHTML = cargoDetails;
