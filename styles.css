@@ -351,10 +351,24 @@ header {
 }
 
 /* Для текста используйте системный шрифт San Francisco или аналогичный */
-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  /* Этот список шрифтов будет автоматически использовать San Francisco на macOS и iOS */
+@font-face {
+  font-family: 'San Francisco';
+  src: url('SF-Pro-Display-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
 }
+
+@font-face {
+  font-family: 'San Francisco';
+  src: url('SF-Pro-Display-Bold.otf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+body {
+  font-family: 'San Francisco', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
 
 /* Стили для блока "О нас" */
 .about-us {
